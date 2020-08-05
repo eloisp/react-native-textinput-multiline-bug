@@ -21,14 +21,8 @@ import {
 const App: () => React$Node = () => {
   
   const [user, setUser] = useState({
-    "address": "12 rue de paris 75001 PARIS", 
-    "category": "all", 
-    "email": "contact@paris.com", 
-    "entreprise": "Paris City SA", 
     "facebook": "ParisCity", 
-    "lastName": "Hidalgo", 
     "musicalStyles": "Disco, Funk, House, Latino, ...",
-    "name": "Anne", 
     "presentation": "Here since 1900",
     "tel": "0606060606", 
     "website": "paris.fr"
@@ -37,43 +31,30 @@ const App: () => React$Node = () => {
 
   const renderContentBottomSheet = () => {
     console.log(user[name]);
+
     switch (name) {
     case 'presentation':
       return (
-        <View style={[styles.containerBS]}>
           <TextInput maxLength={180} multiline={true} placeholder={'Votre présentation'} style={styles.itemContentBS} value={user[name]} onChangeText={(text) => {inputHandler(text, name);}}/>
-        </View>
       );
     case 'tel':
       return (
-        <View style={styles.containerBS}>
           <TextInput keyboardType="phone-pad" placeholder={'Numéro de téléphone'} style={styles.itemContentBS} value={user[name]} onChangeText={(text) => {return inputHandler(text, name);}}/>
-        </View>
       );
     case 'website':
       return (
-        <View style={styles.containerBS}>
           <TextInput placeholder={'Votre site internet'} style={styles.itemContentBS} value={user[name]} onChangeText={(text) => {return inputHandler(text, name);}}/>
-        </View>
       );
     case 'facebook':
       return (
-        <View style={styles.containerBS}>
           <TextInput style={styles.itemContentBS} value={user[name]} onChangeText={(text) => {return inputHandler(text, name);}}/>
-        </View>
       );
     case 'musicalStyles':
       return (
-        <View style={styles.containerBS}>
           <TextInput multiline={true} style={styles.itemContentBS} value={user[name]} onChangeText={(text) => {return inputHandler(text, name);}}/>
-        </View>
       );
     default:
-      return (
-        <View style={styles.containerBS}>
-          <Text>{'Nothing'}</Text>
-        </View>
-      );
+      break;
     }
 
   };
@@ -81,7 +62,7 @@ const App: () => React$Node = () => {
   const inputHandler = (text, _objectName) => {
     setUser((prevUser) => {return {
       ...prevUser,
-      [_objectName]: text,
+      [_objectName]: text.toString(),
     };});
   };
 
